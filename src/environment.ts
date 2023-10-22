@@ -1,5 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+
+const result = dotenv.config();
+if (result.error) {
+  throw result.error;
+}
 
 interface Environment {
   port: number | string;
@@ -11,7 +15,7 @@ interface Environment {
   admin_email: string;
   admin_password: string;
   admin_phone: string;
-  salt_work_factor: number;
+  salt_work_factor: string;
 }
 
 export const environment: Environment = {
@@ -24,5 +28,5 @@ export const environment: Environment = {
   admin_email: process.env.ADMIN_EMAIL as string,
   admin_password: process.env.ADMIN_PASSWORD as string,
   admin_phone: process.env.ADMIN_PHONE as string,
-  salt_work_factor: process.env.SALT_WORK_FACTOR as unknown as number,
+  salt_work_factor: process.env.SALT_WORK_FACTOR as string, // as number,
 };

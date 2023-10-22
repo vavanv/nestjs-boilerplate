@@ -3,7 +3,6 @@ import { createCipheriv, createDecipheriv, randomBytes, scrypt } from 'crypto';
 import { promisify } from 'util';
 
 import { environment } from 'src/environment';
-import config from '../config/config';
 
 const common_utils = {
   get_current_epoch_time: (): number => {
@@ -20,7 +19,7 @@ const common_utils = {
     parameters: password
     return: encrypted password and salt
     */
-    const salt = await bcrypt.genSalt(config['SALT_WORK_FACTOR']);
+    const salt = await bcrypt.genSalt(parseInt(environment.salt_work_factor));
     const hashed_password = bcrypt.hashSync(password, salt);
     return [hashed_password, salt];
   },

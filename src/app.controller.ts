@@ -11,9 +11,14 @@ export class AppController {
     private winstonService: WinstonService,
   ) {}
 
-  @Get()
+  @Get('/')
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('/favicon.ico')
+  getFavicon() {
+    return responses.get_response_object(204, {}, '');
   }
 
   @Get('/api/v1/logs/:type')

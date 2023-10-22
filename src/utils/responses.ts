@@ -1,17 +1,17 @@
 const responses = {
   // RETURN RESPONSE FUNCTION
   get_response_object: (
-    statusCode: Number,
+    statusCode: number,
     data: any,
     message: string | null,
-  ): Object => {
+  ): object => {
     /*
-            This function covnerts statusCode, data and message into a JSON and returns the JSON Objects
-            parameters:  statusCode, data, mesage
-        */
+    This function converts statusCode, data and message into a JSON and returns the JSON Objects
+    parameters:  statusCode, data, message
+    */
     const response: {
-      statusCode: Number;
-      data?: Object | string | null;
+      statusCode: number;
+      data?: object | string | null;
       message?: string | null;
     } = { statusCode: statusCode };
     if (data) {
@@ -64,8 +64,8 @@ const responses = {
   MESSAGE_ALREADY_EXISTS: (params: Array<string>) => {
     return `${params[0]} with this ${params[1]} already exists`;
   },
-  MESSAGE_MISSING_PARAMTERS: (params: Array<string>) => {
-    return `Some Paramters Are Missing: ${params}`;
+  MESSAGE_MISSING_PARAMETERS: (params: Array<string>) => {
+    return `Some Parameters Are Missing: ${params}`;
   },
   MESSAGE_INVALID_DATA: (param: string) => {
     return `Invalid ${param}`;
